@@ -3,7 +3,7 @@
     <b-form @submit="onSubmit">
       <b-container>
         <b-form-row>
-          <b-col>
+          <b-col lg="6" md="8" cols="12">
             <b-form-group
               id="locationInput"
               label="Search:"
@@ -26,7 +26,6 @@
         <b-form-row>
           <b-col lg="6" md="8" cols="12">
             <b-form-group
-              label-cols="2"
               id="startSearchDate"
               label="From:"
               lable-for="startDate"
@@ -35,12 +34,11 @@
               :valid-feedback="validFeedback"
               :state="state"
             >
-              <datepicker id="startDate" v-model="form.startDate"></datepicker>
+              <datepicker id="startDate" v-model="form.startDate" :bootstrapStyling="true"></datepicker>
             </b-form-group>
           </b-col>
           <b-col lg="6" md="8" cols="12">
             <b-form-group
-              label-cols="2"
               id="endSearchDate"
               label="To:"
               lable-for="endDate"
@@ -49,14 +47,16 @@
               :valid-feedback="validFeedback"
               :state="state"
             >
-              <datepicker id="endDate" v-model="form.endDate"></datepicker>
+              <datepicker id="endDate" v-model="form.endDate" :bootstrapStyling="true"></datepicker>
             </b-form-group>
           </b-col>
         </b-form-row>
         <!-- <v-date-picker v-model="form.startDate" popover="bottom"></v-date-picker> -->
         <!-- TODO: Add date selection -->
         <b-row>
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-col>
+            <b-button type="submit" variant="primary">Submit</b-button>
+          </b-col>
         </b-row>
       </b-container>
     </b-form>
