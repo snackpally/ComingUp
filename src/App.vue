@@ -10,11 +10,13 @@
 <script>
 import HeaderBar from "@/components/header-bar.vue";
 import Search from "@/components/search-event.vue";
+// import Event from "@/components/event-list.vue";
 export default {
   name: "app",
   components: {
     HeaderBar,
     Search
+    // Event
   }
 };
 </script>
