@@ -51,8 +51,6 @@
             </b-form-group>
           </b-col>
         </b-form-row>
-        <!-- <v-date-picker v-model="form.startDate" popover="bottom"></v-date-picker> -->
-        <!-- TODO: Add date selection -->
         <b-row>
           <b-col>
             <b-button type="submit" variant="primary">Submit</b-button>
@@ -61,15 +59,18 @@
       </b-container>
     </b-form>
     <hr />
+    <pre class="m-0">{{ form }}</pre>
     <b-card class="mt-3" header="Search Result:">
-      <pre class="m-0">{{ query }}</pre>
+      <Event />
     </b-card>
   </div>
 </template>
 
 <script>
+import Event from "@/components/event-list.vue";
 const axios = require("axios");
 export default {
+  components: { Event },
   computed: {
     state() {
       return this.form.valid;
