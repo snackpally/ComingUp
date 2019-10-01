@@ -1,14 +1,10 @@
 <template>
-  <div id="spacer">
-    <div class="row justify-content-center">
-      <div class="col-3"></div>
-      <div class="col-6">
-        <h1 class="display-4 text-center mb-4">Coming Up Next</h1>
-        <hr width="50%" class="shadow-sm" />
-      </div>
-      <div class="col-3"></div>
+  <b-navbar variant="faded" type="light">
+    <div class="mx-auto mb-3">
+      <h1 class="display-3 text-center">Coming Up Next</h1>
+      <hr width="50%" class="shadow-sm" />
     </div>
-  </div>
+  </b-navbar>
 </template>
 
 <script>

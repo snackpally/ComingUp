@@ -8,14 +8,12 @@
 </template>
 
 <script>
-import HeaderBar from "@/components/header-bar.vue";
 import Search from "@/components/search-event.vue";
 import HeaderBreak from "@/components/header-break.vue";
 // import Event from "@/components/event-list.vue";
 export default {
   name: "app",
   components: {
-    HeaderBar,
     Search,
     HeaderBreak
     // Event
@@ -26,13 +24,18 @@ export default {
 <style>
 #app {
   margin: 0 !important;
+  /* background: #948b8b14; */
 }
 #spacer {
-  height: 45vh;
+  height: 15vw;
   margin-top: 10vh;
 }
 
 h1 {
   font-size: 1.4em;
+}
+/* override datepicker form */
+.input-group > .form-control {
+  background: white !important;
 }
 </style>
