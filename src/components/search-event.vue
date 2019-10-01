@@ -2,8 +2,8 @@
   <div>
     <b-form @submit="onSubmit">
       <b-container>
-        <b-form-row>
-          <b-col lg="6" md="8" cols="12">
+        <b-form-row class="justify-content-center">
+          <b-col lg="6" md="12" cols="12">
             <b-form-group
               id="locationInput"
               label="Search:"
@@ -22,9 +22,10 @@
               ></b-form-input>
             </b-form-group>
           </b-col>
+          <b-col lg="6" md="8" cols="12"></b-col>
         </b-form-row>
-        <b-form-row>
-          <b-col lg="6" md="8" cols="12">
+        <b-form-row class="justify-content-center">
+          <b-col lg="6" md="12" cols="12">
             <b-form-group
               id="startSearchDate"
               label="From:"
@@ -37,7 +38,7 @@
               <datepicker id="startDate" v-model="form.startDate" :bootstrapStyling="true"></datepicker>
             </b-form-group>
           </b-col>
-          <b-col lg="6" md="8" cols="12">
+          <b-col lg="6" md="12" cols="12">
             <b-form-group
               id="endSearchDate"
               label="To:"
@@ -51,8 +52,8 @@
             </b-form-group>
           </b-col>
         </b-form-row>
-        <b-row>
-          <b-col>
+        <b-row class="justify-content-start">
+          <b-col md="8" cols="12">
             <b-button type="submit" variant="primary">Submit</b-button>
           </b-col>
         </b-row>
@@ -60,7 +61,7 @@
     </b-form>
     <hr />
     <pre class="m-0">{{ form }}</pre>
-    <b-card class="mt-3" header="Search Result:">
+    <b-card class="mt-3 mb-2 shadow" header="Search Result:" style="overflow-y:scroll;">
       <Event />
     </b-card>
   </div>
