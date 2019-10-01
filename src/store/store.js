@@ -5,14 +5,19 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
 	state :{
-		artists: ''
+		artists: '',
+		loading: false
 	},
 	mutations: {
 		change(state, artists){
 			state.artists = artists
+		},
+		loadingStatus(state, loading){
+			state.loading = loading
 		}
 	},
 	getters: {
-		artists: state => state.artists
+		artists: state => state.artists,
+		loading: state => state.loading
 	}
 })

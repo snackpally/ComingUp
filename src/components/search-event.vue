@@ -2,6 +2,10 @@
   <div>
     <b-form @submit="onSubmit">
       <b-container>
+        <!-- <div class="text-center" v-if="getLoading">
+          <b-spinner variant="primary" label="Text Centered"></b-spinner>
+        </div>-->
+        <!-- <div v-if="!getLoading"> -->
         <b-form-row class="justify-content-center">
           <b-col lg="6" md="12" cols="12">
             <b-form-group
@@ -31,11 +35,13 @@
               label="From:"
               lable-for="startDate"
               description="Starting date for search"
-              :invalid-feedback="invalidFeedback"
-              :valid-feedback="validFeedback"
-              :state="state"
             >
-              <datepicker id="startDate" v-model="form.startDate" :bootstrapStyling="true"></datepicker>
+              <datepicker
+                id="startDate"
+                v-model="form.startDate"
+                :bootstrapStyling="true"
+                class="bg-white"
+              ></datepicker>
             </b-form-group>
           </b-col>
           <b-col lg="6" md="12" cols="12">
@@ -54,12 +60,16 @@
         </b-form-row>
         <b-row class="justify-content-start">
           <b-col md="8" cols="12">
-            <b-button type="submit" variant="primary">Submit</b-button>
+            <b-button type="submit" variant="primary" v-if="!getLoading">Submit</b-button>
+            <b-button variant="primary" disabled v-if="getLoading">
+              <b-spinner small type="grow"></b-spinner>Loading...
+            </b-button>
           </b-col>
         </b-row>
+        <!-- </div> -->
+        <hr />
       </b-container>
     </b-form>
-    <hr />
     <pre class="m-0">{{ form }}</pre>
     <b-card class="mt-3 mb-2 shadow" header="Search Result:" style="overflow-y:scroll;">
       <Event />
@@ -83,13 +93,16 @@ export default {
     },
     validFeedback() {
       return this.state === true ? "Thank you" : "";
+    },
+    getLoading() {
+      return this.$store.state.loading;
     }
   },
   data() {
     return {
       form: {
         location: "",
-        startDate: "",
+        startDate: new Date(),
         endDate: "",
         valid: null
       },
@@ -101,7 +114,9 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
+      //Refactor this store value later
       var self = this;
+      self.$store.commit("loadingStatus", true);
       self.validate();
       if (self.form.valid) {
         var url = `https://app.ticketmaster.com/discovery/v2/events.json?radius=1000&startDateTime=${DateFixer(
@@ -120,7 +135,12 @@ export default {
                 x => x.classifications[0].segment.name == "Music"
               );
               self.$store.commit("change", filter1);
+              self.$store.commit("loadingStatus", false);
               self.query.body = filter1;
+              self.form.valid = null;
+              self.form.location = "";
+              self.form.startDate = "";
+              self.form.endDate = "";
             }
           })
           .catch(function(res) {
@@ -130,6 +150,8 @@ export default {
               console.log(res.data);
             }
           });
+      } else {
+        self.$store.commit("loadingStatus", false);
       }
     },
     validate() {
