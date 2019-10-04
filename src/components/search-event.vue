@@ -86,15 +86,15 @@ export default {
     state() {
       return this.form.valid;
     },
-    invalidFeedback() {
+    invalidFeedback: function() {
       if (this.form.valid == false) {
         return "Can not be blank";
       }
     },
-    validFeedback() {
+    validFeedback: function() {
       return this.state === true ? "Thank you" : "";
     },
-    getLoading() {
+    getLoading: function() {
       return this.$store.state.loading;
     }
   },
@@ -125,7 +125,7 @@ export default {
           this.form.location
         }&apikey=${process.env.VUE_APP_TKAPIKEY}`;
         axios
-          .get(url)
+          .get(url, { timeout: 2000 })
           .then(function(res) {
             if (res.data._embedded == undefined || null) {
               self.query.body = "Sorry, No shows coming to town...";
@@ -145,6 +145,9 @@ export default {
           })
           .catch(function(res) {
             if (res instanceof Error) {
+              //this error handling should be better
+              self.$store.commit("loadingStatus", false);
+              self.form.valid = null;
               console.log("ERROR", res.message);
             } else {
               console.log(res.data);
