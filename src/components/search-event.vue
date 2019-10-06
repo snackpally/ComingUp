@@ -101,7 +101,6 @@ export default {
     },
     onSubmit(evt) {
       evt.preventDefault();
-      //Refactor this store value later
       var self = this;
       self.$store.commit("loadingStatus", true);
       self.validate();
@@ -112,18 +111,12 @@ export default {
           endDate: DateFixer(this.form.endDate),
           location: this.form.location
         };
-        //This works need to update state with response
         axios
           .post(url, reqObj)
           .then(function(res) {
             self.$store.commit("change", res.data);
             self.$store.commit("loadingStatus", false);
             self.$router.push({ name: "Events" });
-            // self.form.valid = null;
-            // self.form.startDate = new Date();
-            // self.form.endDate = "";
-            // self.form.location = "";
-            // console.log(res);
           })
           .catch(function(res) {
             if (res instanceof Error) {
