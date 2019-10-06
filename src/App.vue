@@ -3,7 +3,9 @@
     <HeaderBar />
     <b-container class="mt-5" id="mainWrapper">
       <transition name="fade" mode="out-in">
+        <!-- <b-container fluid class="mt-4"> -->
         <router-view></router-view>
+        <!-- </b-container> -->
       </transition>
     </b-container>
 

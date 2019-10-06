@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 3000 | process.env.PORT;
+const port = process.env.PORT || 3001 ;
 const cors = require('cors');
 const url = require('url');
 const bodyparser = require('body-parser')
@@ -58,7 +58,7 @@ app.post('/events', (req, res) =>{
 	
 })
 
-app.listen(port, ()=>{
+app.listen(port,()=>{
 	console.log(`app is listening on port ${port}`);
 })
 
