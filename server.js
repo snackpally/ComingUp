@@ -1,10 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3001;
+const port = 3000 | process.env.PORT;
 const cors = require('cors');
 const url = require('url');
 const bodyparser = require('body-parser')
+const axios = require('axios')
 
 app.use(cors('*'));
 app.use(bodyparser.json())
@@ -31,8 +32,30 @@ app.get('/callback', (req, res) => {
 //Data Api Endpoints
 app.post('/events', (req, res) =>{
 	//move api calls into here req.body will be json of values for query string
-	console.log(req.body);
-	res.send(req.body);
+	console.log(typeof(req.body.startDate))
+	console.log(process.env.VUE_APP_TKAPIKEY)
+	var TKurl = `https://app.ticketmaster.com/discovery/v2/events.json?radius=1000&startDateTime=${req.body.startDate}&endDateTime=${req.body.endDate}&city=${req.body.location}&apikey=${process.env.VUE_APP_TKAPIKEY}`;
+	console.log(TKurl)
+	axios.get(TKurl, {timeout: 10000})
+	.then(function(apires){
+		if(apires.data._embedded == undefined || null){
+			res.body = null;
+			res.send(res.body);
+		}
+		else{
+			var events = apires.data._embedded.events;
+			res.body = events.filter( x =>
+        x.classifications[0].segment.name == "Music"
+			);
+			res.send(res.body);
+		}
+	})
+	.catch(function(apires){
+		if(apires instanceof Error){
+			console.log("Error: ", apires.message);
+		}
+	})
+	
 })
 
 app.listen(port, ()=>{

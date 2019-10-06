@@ -1,6 +1,6 @@
 <template>
   <header>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar toggleable="lg" type="light" style="background: #e9ecef;">
       <HeaderBarBrand />
     </b-navbar>
   </header>
