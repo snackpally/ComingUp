@@ -105,7 +105,8 @@ export default {
       self.$store.commit("loadingStatus", true);
       self.validate();
       if (self.form.valid) {
-        var url = "http://localhost:3000/events";
+        // var url = "http://localhost:3000/events";
+        var url = "https://comingupserver.herokuapp.com/events";
         var reqObj = {
           startDate: DateFixer(this.form.startDate),
           endDate: DateFixer(this.form.endDate),
