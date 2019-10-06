@@ -1,5 +1,9 @@
 <template>
-  <b-card class="mt-3 mb-2 shadow" header="Search Result:" style="overflow-y:scroll;">
+  <b-card
+    class="mt-3 mb-2 shadow"
+    header="Search Result:"
+    style="max-height: 600px; overflow-y:scroll;"
+  >
     <div v-if="getArtists != undefined" md="6">
       <div v-for="artist in getArtists" v-bind:key="artist.id">
         <b-card

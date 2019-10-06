@@ -6,19 +6,35 @@
         <router-view></router-view>
       </transition>
     </b-container>
-    <div>
-      <footer class="footer">&copy; Zack Viente 2019</footer>
-    </div>
+
+    <!-- <footer class="footer">&copy; Zack Viente 2019</footer> -->
   </div>
 </template>
 
 <script>
 import HeaderBar from "@/components/header-bar.vue";
+const img = "~/assets/background-right.png";
 export default {
+  computed: {
+    styles() {
+      return {
+        "background-image": `url(${img}})`,
+        "background-repeat": "no-repeat",
+        "background-size": "cover"
+      };
+    }
+  },
   name: "app",
   components: {
     HeaderBar
   }
+  // data() {
+  //   return {
+  //     cssProps: {
+  //       backgroundImage: `url(${img}})`
+  //     }
+  //   };
+  // }
 };
 </script>
 
