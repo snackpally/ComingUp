@@ -1,41 +1,35 @@
 <template>
   <div id="app">
-    <HeaderBreak />
-    <b-container class="mt-2">
-      <Search />
+    <HeaderBar />
+    <b-container class="mt-5" id="mainWrapper">
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </b-container>
+    <div>
+      <footer class="footer">&copy; Zack Viente 2019</footer>
+    </div>
   </div>
 </template>
 
 <script>
-import Search from "@/components/search-event.vue";
-import HeaderBreak from "@/components/header-break.vue";
-// import Event from "@/components/event-list.vue";
+import HeaderBar from "@/components/header-bar.vue";
 export default {
   name: "app",
   components: {
-    Search,
-    HeaderBreak
-    // Event
+    HeaderBar
   }
 };
 </script>
 
 <style>
-#app {
-  margin: 0 !important;
-  /* background: #948b8b14; */
+@import "./styles/main.css";
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
-#spacer {
-  height: 15vw;
-  margin-top: 10vh;
-}
-
-h1 {
-  font-size: 1.4em;
-}
-/* override datepicker form */
-.input-group > .form-control {
-  background: white !important;
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
