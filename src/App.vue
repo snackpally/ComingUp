@@ -1,14 +1,9 @@
 <template>
   <div id="app">
     <HeaderBar />
-    <b-container class="mt-5" id="mainWrapper">
-      <transition name="fade" mode="out-in">
-        <!-- <b-container fluid class="mt-4"> -->
-        <router-view></router-view>
-        <!-- </b-container> -->
-      </transition>
-    </b-container>
-
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <!-- <footer class="footer">&copy; Zack Viente 2019</footer> -->
   </div>
 </template>
@@ -30,13 +25,6 @@ export default {
   components: {
     HeaderBar
   }
-  // data() {
-  //   return {
-  //     cssProps: {
-  //       backgroundImage: `url(${img}})`
-  //     }
-  //   };
-  // }
 };
 </script>
 

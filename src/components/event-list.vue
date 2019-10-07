@@ -1,18 +1,20 @@
 <template>
-  <b-card class="mt-3 mb-2 shadow" header="Search Result:">
-    <div v-if="getArtists != undefined" md="6" style="max-height: 400px; overflow-y: scroll;">
-      <div v-for="artist in getArtists" v-bind:key="artist.id">
-        <b-card
-          :img-src="artist.images.filter(x => x.height === 56)[0].url"
-          img-alt="Card image"
-          img-left
-          class="mb-3 shadow-sm"
-        >
-          <b-card-text>{{ artist.name }} coming to the {{ artist._embedded.venues[0].name }} on {{ artist.dates.start.dateTime.split("T")[0].slice(5)}}</b-card-text>
-        </b-card>
+  <b-container class="mt-5">
+    <b-card class="mt-3 mb-2 shadow" header="Search Result:">
+      <div v-if="getArtists != undefined" md="6" style="max-height: 400px; overflow-y: scroll;">
+        <div v-for="artist in getArtists" v-bind:key="artist.id">
+          <b-card
+            :img-src="artist.images.filter(x => x.height === 56)[0].url"
+            img-alt="Card image"
+            img-left
+            class="mb-3 shadow-sm"
+          >
+            <b-card-text>{{ artist.name }} coming to the {{ artist._embedded.venues[0].name }} on {{ artist.dates.start.dateTime.split("T")[0].slice(5)}}</b-card-text>
+          </b-card>
+        </div>
       </div>
-    </div>
-  </b-card>
+    </b-card>
+  </b-container>
 </template>
 
 <script>

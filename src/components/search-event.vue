@@ -1,71 +1,73 @@
 <template>
-  <div>
-    <b-form @submit="onSubmit">
-      <b-container>
-        <b-form-row class="justify-content-center">
-          <b-col lg="6" md="12" cols="12">
-            <b-form-group
-              id="locationInput"
-              label="Search:"
-              label-for="townSearch"
-              description="Enter your town to build a playlist"
-              :invalid-feedback="invalidFeedback()"
-              :valid-feedback="validFeedback()"
-              :state="state"
-            >
-              <b-form-input
-                id="townSearch"
-                type="text"
-                placeholder="Coolsville"
-                v-model="form.location"
+  <b-container class="mt-5">
+    <div>
+      <b-form @submit="onSubmit">
+        <b-container>
+          <b-form-row class="justify-content-center">
+            <b-col lg="6" md="12" cols="12">
+              <b-form-group
+                id="locationInput"
+                label="Search:"
+                label-for="townSearch"
+                description="Enter your town to build a playlist"
+                :invalid-feedback="invalidFeedback()"
+                :valid-feedback="validFeedback()"
                 :state="state"
-              ></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col lg="6" md="8" cols="12"></b-col>
-        </b-form-row>
-        <b-form-row class="justify-content-center">
-          <b-col lg="6" md="12" cols="12">
-            <b-form-group
-              id="startSearchDate"
-              label="From:"
-              lable-for="startDate"
-              description="Starting date for search"
-            >
-              <datepicker
-                id="startDate"
-                v-model="form.startDate"
-                :bootstrapStyling="true"
-                class="bg-white"
-              ></datepicker>
-            </b-form-group>
-          </b-col>
-          <b-col lg="6" md="12" cols="12">
-            <b-form-group
-              id="endSearchDate"
-              label="To:"
-              lable-for="endDate"
-              description="End date for search"
-              :invalid-feedback="invalidFeedback()"
-              :valid-feedback="validFeedback()"
-              :state="state"
-            >
-              <datepicker id="endDate" v-model="form.endDate" :bootstrapStyling="true"></datepicker>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-row class="justify-content-start">
-          <b-col md="8" cols="12">
-            <b-button type="submit" variant="primary" v-if="!getLoading">Submit</b-button>
-            <b-button variant="primary" disabled v-if="getLoading">
-              <b-spinner small type="grow"></b-spinner>Loading...
-            </b-button>
-          </b-col>
-        </b-row>
-        <hr />
-      </b-container>
-    </b-form>
-  </div>
+              >
+                <b-form-input
+                  id="townSearch"
+                  type="text"
+                  placeholder="Coolsville"
+                  v-model="form.location"
+                  :state="state"
+                ></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col lg="6" md="8" cols="12"></b-col>
+          </b-form-row>
+          <b-form-row class="justify-content-center">
+            <b-col lg="6" md="12" cols="12">
+              <b-form-group
+                id="startSearchDate"
+                label="From:"
+                lable-for="startDate"
+                description="Starting date for search"
+              >
+                <datepicker
+                  id="startDate"
+                  v-model="form.startDate"
+                  :bootstrapStyling="true"
+                  class="bg-white"
+                ></datepicker>
+              </b-form-group>
+            </b-col>
+            <b-col lg="6" md="12" cols="12">
+              <b-form-group
+                id="endSearchDate"
+                label="To:"
+                lable-for="endDate"
+                description="End date for search"
+                :invalid-feedback="invalidFeedback()"
+                :valid-feedback="validFeedback()"
+                :state="state"
+              >
+                <datepicker id="endDate" v-model="form.endDate" :bootstrapStyling="true"></datepicker>
+              </b-form-group>
+            </b-col>
+          </b-form-row>
+          <b-row class="justify-content-start">
+            <b-col md="8" cols="12">
+              <b-button type="submit" variant="primary" v-if="!getLoading">Submit</b-button>
+              <b-button variant="primary" disabled v-if="getLoading">
+                <b-spinner small type="grow"></b-spinner>Loading...
+              </b-button>
+            </b-col>
+          </b-row>
+          <hr />
+        </b-container>
+      </b-form>
+    </div>
+  </b-container>
 </template>
 
 <script>

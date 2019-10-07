@@ -1,23 +1,22 @@
 <template>
-  <div>
-    <b-jumbotron>
-      <template v-slot:header>BootstrapVue</template>
+  <b-container class="mt-5">
+    <div>
+      <b-jumbotron>
+        <template v-slot:header>Coming Up Next</template>
 
-      <template v-slot:lead>
-        This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-        featured content or information.
-      </template>
+        <template v-slot:lead>Easily discover and explore artists coming to a town nere you |</template>
 
-      <hr class="my-4" />
+        <hr class="my-4" />
 
-      <p>
-        It uses utility classes for typography and spacing to space content out within the larger
-        container.
-      </p>
+        <p>
+          We'll select a sample of songs for upcoming shows and even deliver you a custom curated playlist so you can listen
+          and decide if that show is right for you!
+        </p>
 
-      <b-button variant="primary" to="/search">Search for upcoming shows</b-button>
-    </b-jumbotron>
-  </div>
+        <b-button variant="primary" to="/search">Search for upcoming shows</b-button>
+      </b-jumbotron>
+    </div>
+  </b-container>
 </template>
 
 <script>
