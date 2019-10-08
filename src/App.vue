@@ -12,6 +12,9 @@
 import HeaderBar from "@/components/header-bar.vue";
 const img = "~/assets/background-right.png";
 export default {
+  mounted() {
+    window.onSpotifyWebPlaybackSDKReady = () => {};
+  },
   computed: {
     styles() {
       return {
