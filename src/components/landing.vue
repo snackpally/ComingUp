@@ -4,7 +4,7 @@
       <b-jumbotron>
         <template v-slot:header>Coming Up Next</template>
 
-        <template v-slot:lead>Easily discover and explore artists coming to a town nere you |</template>
+        <template v-slot:lead>Easily discover and explore artists coming to a town near you |</template>
 
         <hr class="my-4" />
 

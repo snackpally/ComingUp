@@ -13,7 +13,7 @@ body {
   background-size: cover;
 } */
 #app {
-  height: 100vh;
+  /* height: 100vh;
   margin: 0 !important;
   background: rgb(2, 0, 36);
   background: linear-gradient(
@@ -23,7 +23,7 @@ body {
     rgba(0, 212, 255, 1) 100%
   );
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   /* background: #948b8b14; */
   /* height: 100%;
   display: flex;
@@ -31,7 +31,7 @@ body {
 }
 .jumbotron {
   background: #e9ecef00 !important;
-  color: white;
+  color: grey;
 }
 .footer {
   flex-shrink: 0;
