@@ -55,7 +55,15 @@ app.post('/events', (req, res) =>{
 			console.log("Error: ", apires.message);
 		}
 	})
-	
+})
+
+axios.get(`https://api.songkick.com/api/3.0/search/locations.json?query=${res.body.location}&apikey=${process.env.VUE_APP_SNGKICKKEY}
+`).then(function(res,req,next){
+	res.send(res.body)
+}).catch(function(res){
+if(res instanceof Error){
+	throw new Error;
+}
 })
 
 app.listen(port,()=>{
